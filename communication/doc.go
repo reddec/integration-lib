@@ -1,0 +1,4 @@
+/*
+	Communication endpoints
+*/
+package communication
