@@ -35,6 +35,11 @@ func (cfg SheetsConfig) AppendRow(values ...interface{}) error {
 	return cfg.AppendRowToContext(context.Background(), cfg.SheetId, "A1", values...)
 }
 
+// Append values as row to first empty row to default sheet
+func (cfg SheetsConfig) AppendRowContext(ctx context.Context, values ...interface{}) error {
+	return cfg.AppendRowToContext(ctx, cfg.SheetId, "A1", values...)
+}
+
 // Append row to google spread sheets
 func (cfg SheetsConfig) AppendRowToContext(ctx context.Context, sheetID, appendRange string, values ...interface{}) error {
 	srv, err := sheets.NewService(ctx, option.WithCredentialsFile(cfg.CredentialsFile))
